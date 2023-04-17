@@ -13,12 +13,12 @@ class PetBoardingPage extends StatefulWidget {
 
 class _PetBoardingPageState extends State<PetBoardingPage> {
 
-  
+  // Declare virable
 
   double _hours = 0;
   int _days = 0;
-  double _hourlyRate = 10;
-  double _dailyRate = 60;
+  double _hourlyRate = 0;
+  double _dailyRate = 0;
   double _totalRate = 0;
   String _discountCode = '';
   double _discountPercentage = 0;
@@ -27,6 +27,7 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
   int _userRating = 0;
 
 
+//  This method assign value to houry rate and daily rate
   @override
   void initState() {
     super.initState();
@@ -35,7 +36,7 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
       _dailyRate = widget.boardingSpace.rate[0].daysRate;
     }
   }
-
+// This update totol payment
   void _updateTotalPayment() {
     setState(() {
       double totalHoursRate = _hourlyRate * _hours;
@@ -62,14 +63,14 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
       });
     }
   }
-
+// Submit rating 
   void _submitRating(int rating) {
     setState(() {
       _userRating = rating;
       _isRatingGiven = true;
     });
   }
-
+// Widget Build
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,10 +80,6 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            Text(
-              widget.boardingSpace.title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
             Text(
               'Details',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -110,7 +107,7 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
               'Select Hours: $_hours Hours',
               style: TextStyle(fontSize: 18),
             ),
-            Slider(
+            Slider(  // Slider hour value
               value: _hours,
               onChanged: (value) {
                 setState(() {
@@ -128,7 +125,7 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
               'Select Days: $_days days',
               style: TextStyle(fontSize: 18),
             ),
-            Slider(
+            Slider(  //Slider days value
               value: _days.toDouble(),
               onChanged: (value) {
                 setState(() {
@@ -153,7 +150,7 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
               ),
             ),
             SizedBox(height: 16.0),
-            Text(
+            Text( // Dispaly discount percentage and total payment
               'Discount: $_discountPercentage%',
               style: TextStyle(fontSize: 18),
             ),
@@ -162,7 +159,7 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 32.0),
-            Text(
+            Text( // Display Rating
               'Rating:',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
@@ -173,13 +170,13 @@ class _PetBoardingPageState extends State<PetBoardingPage> {
                   )
                 : Column(
                     children: [
-                      Text(
+                      Text( 
                         'Please give us your rating:',
                         style: TextStyle(fontSize: 18),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: [ // Show star
                           IconButton(
                             icon: Icon(Icons.star),
                             onPressed: () {

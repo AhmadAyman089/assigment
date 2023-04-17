@@ -14,7 +14,7 @@ class _Page2State extends State<Page2> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pet Boarding Space Types'),
+        title: const Text('Pet Boarding Space Types'), // Title 
       ),
 
     
@@ -28,7 +28,7 @@ class _Page2State extends State<Page2> {
                  context,
                  MaterialPageRoute(
                   builder: (context) {
-                      return PetBoardingPage(boardingSpace: BoardingSpace.samples[index]);
+                      return PetBoardingPage(boardingSpace: BoardingSpace.samples[index]); // Send info to PetBoardingPage
                     },
                   ),
                 );
@@ -81,12 +81,12 @@ class BoardingSpace {
   String imageUrl;
 
   BoardingSpace(this.title, this.imageUrl,this.petRate,this.rate);
-  
+  // Show boarding space with rate value
   static List<BoardingSpace> samples = [    
     BoardingSpace('Basic Dog Boarding Space', 'assets/BasicBoardingDog.jpg',1,
     [
       Rate(20, 60, ),
-     
+    
     ]),  
     BoardingSpace('Luxury Dog Boarding Space', 'assets/LuxuryBoardingDog.jpg',1,
     [
@@ -105,7 +105,7 @@ class BoardingSpace {
     ]), 
      ];
 }
-
+// 
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -134,6 +134,7 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+// Class for rate
 class Rate {
   double hoursRate;
   double daysRate;
